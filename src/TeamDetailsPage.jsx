@@ -83,21 +83,14 @@ const TeamDetailsPage = () => {
 
     return (
         <div
-            className="bg-black bg-cover bg-center bg-no-repeat min-h-screen w-full pt-8 px-8"
+            className="bg-black bg-cover bg-center bg-no-repeat min-h-screen w-full px-8 fixed inset-0 overflow-y-auto"
         >
-            {/* Back button */}
-            <button
-                onClick={() => navigate('/')}
-                className="text-white text-lg font-bold mb-8 flex items-center gap-2 hover:opacity-80 transition-opacity"
-                style={{ fontFamily: 'Nebula, Montserrat, Poppins, sans-serif' }}
-            >
-                ← BACK
-            </button>
+
 
             {/* Team heading */}
             <h1
-                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white text-center mb-20"
-                style={{ fontFamily: 'Nebula, Montserrat, Poppins, sans-serif', letterSpacing: '0.2em', marginBottom: '5rem' }}
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white text-center mb-20 mt-12"
+                style={{ fontFamily: 'Nebula, Montserrat, Poppins, sans-serif', letterSpacing: '0.2em', marginTop: '3rem', marginBottom: '3rem' }}
             >
                 {team.title}
             </h1>

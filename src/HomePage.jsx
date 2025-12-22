@@ -15,7 +15,7 @@ function HomePage() {
 
             <div className="flex flex-col items-center w-full lg:pr-96">
 
-                <h1 className='text-6xl font-bold mb-5 text-white' style={{ fontFamily: 'Nebula, Montserrat, Poppins, sans-serif', marginBottom: '2rem' }}>
+                <h1 className='text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-5 text-white' style={{ fontFamily: 'Nebula, Montserrat, Poppins, sans-serif', marginBottom: '2rem' }}>
                     OUR TEAMS
                 </h1>
 
