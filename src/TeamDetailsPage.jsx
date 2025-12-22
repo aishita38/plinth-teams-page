@@ -70,7 +70,7 @@ const TeamDetailsPage = () => {
             contactText="Contact"
             showUserInfo={true}
             enableTilt={true}
-            onContactClick={() => console.log(`Contact clicked for ${profile.name}`)}
+            onContactClick={() => window.open(`https://instagram.com/${profile.handle}`, '_blank')}
         />
     ));
 
