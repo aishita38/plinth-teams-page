@@ -1,5 +1,8 @@
 import { useRef, useEffect, useState, useCallback } from 'react';
 import { gsap } from 'gsap';
+import { useNavigate } from 'react-router-dom';
+
+import ProfileCard from './ProfileCard';
 
 const DEFAULT_PARTICLE_COUNT = 12;
 const DEFAULT_SPOTLIGHT_RADIUS = 300;
@@ -9,39 +12,33 @@ const MOBILE_BREAKPOINT = 768;
 const cardData = [
   {
     color: '#060010',
-    title: 'Analytics',
-    description: 'Track user behavior',
-    label: 'Insights'
+    title: 'Festhead',
+    profiles: 2
   },
   {
     color: '#060010',
-    title: 'Dashboard',
-    description: 'Centralized data view',
-    label: 'Overview'
+    title: 'Sponsorship',
+    profiles: 1
   },
   {
     color: '#060010',
     title: 'Collaboration',
-    description: 'Work together seamlessly',
-    label: 'Teamwork'
+    profiles: 1
   },
   {
     color: '#060010',
     title: 'Automation',
-    description: 'Streamline workflows',
-    label: 'Efficiency'
+    profiles: 3
   },
   {
     color: '#060010',
     title: 'Integration',
-    description: 'Connect favorite tools',
-    label: 'Connectivity'
+    profiles: 2
   },
   {
     color: '#060010',
     title: 'Security',
-    description: 'Enterprise-grade protection',
-    label: 'Protection'
+    profiles: 2
   }
 ];
 
@@ -88,7 +85,8 @@ const ParticleCard = ({
   glowColor = DEFAULT_GLOW_COLOR,
   enableTilt = true,
   clickEffect = false,
-  enableMagnetism = false
+  enableMagnetism = false,
+  onCardClick
 }) => {
   const cardRef = useRef(null);
   const particlesRef = useRef([]);
@@ -246,6 +244,11 @@ const ParticleCard = ({
     };
 
     const handleClick = e => {
+      // Call custom click handler if provided
+      if (onCardClick) {
+        onCardClick(e);
+      }
+
       if (!clickEffect) return;
 
       const rect = element.getBoundingClientRect();
@@ -303,7 +306,7 @@ const ParticleCard = ({
       element.removeEventListener('click', handleClick);
       clearAllParticles();
     };
-  }, [animateParticles, clearAllParticles, disableAnimations, enableTilt, enableMagnetism, clickEffect, glowColor]);
+  }, [animateParticles, clearAllParticles, disableAnimations, enableTilt, enableMagnetism, clickEffect, glowColor, onCardClick]);
 
   return (
     <div
@@ -487,6 +490,7 @@ const MagicBento = ({
   enableMagnetism = true
 }) => {
   const gridRef = useRef(null);
+  const navigate = useNavigate();
   const isMobile = useMobileDetection();
   const shouldDisableAnimations = disableAnimations || isMobile;
 
@@ -637,7 +641,7 @@ const MagicBento = ({
       <BentoCardGrid gridRef={gridRef}>
         <div className="card-responsive grid gap-2">
           {cardData.map((card, index) => {
-            const baseClassName = `card flex flex-col justify-between relative aspect-[4/3] min-h-[200px] w-full max-w-full p-8 rounded-[20px] border border-solid font-light overflow-hidden transition-all duration-300 ease-in-out hover:-translate-y-0.5 hover:shadow-[0_8px_25px_rgba(0,0,0,0.15)] ${enableBorderGlow ? 'card--border-glow' : ''
+            const baseClassName = `card flex flex-col justify-between relative aspect-[4/3] min-h-[200px] w-full max-w-full p-8 rounded-[20px] border border-solid font-light overflow-hidden transition-all duration-300 ease-in-out hover:-translate-y-0.5 hover:shadow-[0_8px_25px_rgba(0,0,0,0.15)] cursor-pointer ${enableBorderGlow ? 'card--border-glow' : ''
               }`;
 
             const cardStyle = {
@@ -648,6 +652,10 @@ const MagicBento = ({
               '--glow-y': '50%',
               '--glow-intensity': '0',
               '--glow-radius': '200px'
+            };
+
+            const handleCardClick = () => {
+              navigate(`/team/${card.title.toLowerCase()}`);
             };
 
             if (enableStars) {
@@ -662,19 +670,15 @@ const MagicBento = ({
                   enableTilt={enableTilt}
                   clickEffect={clickEffect}
                   enableMagnetism={enableMagnetism}
+                  onCardClick={handleCardClick}
                 >
-                  <div className="card__header flex justify-between gap-3 relative text-white">
-                    <span className="card__label text-base">{card.label}</span>
-                  </div>
-                  <div className="card__content flex flex-col relative text-white">
-                    <h3 className={`card__title font-normal text-base m-0 mb-1 ${textAutoHide ? 'text-clamp-1' : ''}`}>
+                  <div
+                    className="card__content flex flex-col justify-center relative text-white"
+                    style={{ zIndex: 10 }}
+                  >
+                    <h3 className={`card__title font-normal text-base m-0 ${textAutoHide ? 'text-clamp-1' : ''}`}>
                       {card.title}
                     </h3>
-                    <p
-                      className={`card__description text-xs leading-5 opacity-90 ${textAutoHide ? 'text-clamp-2' : ''}`}
-                    >
-                      {card.description}
-                    </p>
                   </div>
                 </ParticleCard>
               );
@@ -746,6 +750,9 @@ const MagicBento = ({
                   };
 
                   const handleClick = e => {
+                    // Navigate to team details page
+                    navigate(`/team/${card.title.toLowerCase()}`);
+
                     if (!clickEffect || shouldDisableAnimations) return;
 
                     const rect = el.getBoundingClientRect();
@@ -795,16 +802,10 @@ const MagicBento = ({
                   el.addEventListener('click', handleClick);
                 }}
               >
-                <div className="card__header flex justify-between gap-3 relative text-white">
-                  <span className="card__label text-base">{card.label}</span>
-                </div>
-                <div className="card__content flex flex-col relative text-white">
-                  <h3 className={`card__title font-normal text-base m-0 mb-1 ${textAutoHide ? 'text-clamp-1' : ''}`}>
+                <div className="card__content flex flex-col justify-center relative text-white">
+                  <h3 className={`card__title font-normal text-base m-0 ${textAutoHide ? 'text-clamp-1' : ''}`}>
                     {card.title}
                   </h3>
-                  <p className={`card__description text-xs leading-5 opacity-90 ${textAutoHide ? 'text-clamp-2' : ''}`}>
-                    {card.description}
-                  </p>
                 </div>
               </div>
             );
