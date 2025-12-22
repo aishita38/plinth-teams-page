@@ -1,20 +1,30 @@
 @import "tailwindcss";
-*{
-  margin:0;
-  padding : 0;
-  box-sizing : border-box;
-  font-family:poppins;
+
+@font-face {
+  font-family: 'Nebula';
+  src: url('https://fonts.cdnfonts.com/s/14856/Nebula-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+  /* This ensures fallback fonts show while Nebula loads */
 }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
 html,
-body{
-  height:100%;
-  width:100%;
+body {
+  height: 100%;
+  width: 100%;
 }
-body{
+
+body {
   background-color: #ffffff;
-  background-image: radial-gradient(
-    rgba(0, 0, 0, 0.15) 1px,
-    transparent 1px
-  );
+  background-image: radial-gradient(rgba(0, 0, 0, 0.15) 1px,
+      transparent 1px);
   background-size: 16px 16px;
 }
