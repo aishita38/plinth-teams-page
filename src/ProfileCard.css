@@ -225,6 +225,7 @@
       hsla(207, 40%, 30%, 0.8) 90%);
   mix-blend-mode: overlay;
   filter: brightness(0.8) contrast(1.2);
+  opacity: 0.3;
   z-index: 4;
 }
 

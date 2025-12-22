@@ -83,28 +83,30 @@ const TeamDetailsPage = () => {
 
     return (
         <div
-            className="bg-black bg-cover bg-center bg-no-repeat min-h-screen w-full flex flex-col items-center justify-center"
+            className="bg-black bg-cover bg-center bg-no-repeat min-h-screen w-full pt-8 px-8"
         >
             {/* Back button */}
             <button
                 onClick={() => navigate('/')}
-                className="absolute top-8 left-8 text-white text-lg font-bold px-6 py-3 rounded-lg transition-colors duration-300"
-                style={{ fontFamily: 'Nebula, sans-serif' }}
+                className="text-white text-lg font-bold mb-8 flex items-center gap-2 hover:opacity-80 transition-opacity"
+                style={{ fontFamily: 'Nebula, Montserrat, Poppins, sans-serif' }}
             >
-                ← Back
+                ← BACK
             </button>
 
             {/* Team heading */}
             <h1
-                className="text-6xl font-bold text-white"
-                style={{ fontFamily: 'Nebula, sans-serif', letterSpacing: '0.2em', marginBottom: '4rem' }}
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white text-center mb-20"
+                style={{ fontFamily: 'Nebula, Montserrat, Poppins, sans-serif', letterSpacing: '0.2em', marginBottom: '5rem' }}
             >
                 {team.title}
             </h1>
 
             {/* Profile cards grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-8 max-w-7xl">
-                {profileCards}
+            <div className="flex justify-center w-full">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-12 px-4 sm:px-8 md:px-12">
+                    {profileCards}
+                </div>
             </div>
         </div>
     );

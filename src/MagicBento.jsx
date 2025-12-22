@@ -651,14 +651,17 @@ const MagicBento = ({
               '--glow-x': '50%',
               '--glow-y': '50%',
               '--glow-intensity': '0',
-              '--glow-radius': '200px'
+              '--glow-radius': '200px',
+              touchAction: 'manipulation',
+              cursor: 'pointer'
             };
 
             const handleCardClick = () => {
               navigate(`/team/${card.title.toLowerCase()}`);
             };
 
-            if (enableStars) {
+            // Use regular div on mobile for better click handling
+            if (enableStars && !shouldDisableAnimations) {
               return (
                 <ParticleCard
                   key={index}
@@ -673,8 +676,9 @@ const MagicBento = ({
                   onCardClick={handleCardClick}
                 >
                   <div
-                    className="card__content flex flex-col justify-center relative text-white"
-                    style={{ zIndex: 10 }}
+                    className="card__content flex flex-col justify-center relative text-white cursor-pointer"
+                    style={{ zIndex: 10, pointerEvents: 'auto', touchAction: 'manipulation' }}
+                    onClick={handleCardClick}
                   >
                     <h3 className={`card__title font-normal text-base m-0 ${textAutoHide ? 'text-clamp-1' : ''}`}>
                       {card.title}
@@ -800,6 +804,7 @@ const MagicBento = ({
                   el.addEventListener('mousemove', handleMouseMove);
                   el.addEventListener('mouseleave', handleMouseLeave);
                   el.addEventListener('click', handleClick);
+                  el.addEventListener('touchend', handleClick); // Add touch support for mobile
                 }}
               >
                 <div className="card__content flex flex-col justify-center relative text-white">
