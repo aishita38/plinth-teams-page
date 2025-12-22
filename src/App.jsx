@@ -30,12 +30,24 @@ function App() {
     },
   ];
 
+  // App.js
   return (
     <div
-      className='min-h-screen w-full bg-cover bg-center bg-no-repeat flex items-center justify-center p-10'
+      className='bg-cover bg-center bg-no-repeat min-h-screen w-full flex items-center justify-center'
       style={{ backgroundImage: `url(${bgImage})` }}
     >
-      <MagicBento data={TeamData} />
+      {/* Centered content wrapper */}
+      <div className="flex flex-col items-center">
+
+        <h1 className='text-6xl font-bold mb-5 text-white' style={{ fontFamily: 'Nebula, sans-serif', marginBottom: '2rem' }}>
+          OUR TEAMS
+        </h1>
+
+        <div className='w-full flex justify-center'>
+          <MagicBento data={TeamData} />
+        </div>
+
+      </div>
     </div>
   );
 }
