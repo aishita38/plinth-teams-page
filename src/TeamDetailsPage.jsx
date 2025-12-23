@@ -24,29 +24,29 @@ const TeamDetailsPage = () => {
                 { name: 'Amit Kumar', handle: 'amit_kumar', avatarUrl: 'https://via.placeholder.com/400x600/1a1a2e/ffffff?text=Amit' }
             ]
         },
-        'collaboration': {
-            title: 'COLLABORATION',
+        'oc': {
+            title: 'OC',
             profiles: [
                 { name: 'Sneha Reddy', handle: 'sneha_reddy', avatarUrl: 'https://as2.ftcdn.net/v2/jpg/01/34/51/79/1000_F_134517966_TzOCj9dV5DLsPfQRFmjxkDKSDov5PQ1i.jpg' }
             ]
         },
-        'automation': {
-            title: 'AUTOMATION',
+        'creative': {
+            title: 'CREATIVE',
             profiles: [
                 { name: 'Vikram Singh', handle: 'vikram_singh', avatarUrl: 'https://via.placeholder.com/400x600/1a1a2e/ffffff?text=Vikram' },
                 { name: 'Ananya Gupta', handle: 'ananya_gupta', avatarUrl: 'https://via.placeholder.com/400x600/1a1a2e/ffffff?text=Ananya' },
                 { name: 'Rohan Mehta', handle: 'rohan_mehta', avatarUrl: 'https://via.placeholder.com/400x600/1a1a2e/ffffff?text=Rohan' }
             ]
         },
-        'integration': {
-            title: 'INTEGRATION',
+        'developer': {
+            title: 'DEVELOPER',
             profiles: [
                 { name: 'Kavya Iyer', handle: 'kavya_iyer', avatarUrl: 'https://via.placeholder.com/400x600/1a1a2e/ffffff?text=Kavya' },
                 { name: 'Arjun Nair', handle: 'arjun_nair', avatarUrl: 'https://via.placeholder.com/400x600/1a1a2e/ffffff?text=Arjun' }
             ]
         },
-        'security': {
-            title: 'SECURITY',
+        'public relations': {
+            title: 'PUBLIC RELATIONS',
             profiles: [
                 { name: 'Neha Kapoor', handle: 'neha_kapoor', avatarUrl: 'https://via.placeholder.com/400x600/1a1a2e/ffffff?text=Neha' },
                 { name: 'Siddharth Joshi', handle: 'siddharth_joshi', avatarUrl: 'https://via.placeholder.com/400x600/1a1a2e/ffffff?text=Siddharth' }

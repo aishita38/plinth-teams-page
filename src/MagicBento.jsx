@@ -3,6 +3,12 @@ import { gsap } from 'gsap';
 import { useNavigate } from 'react-router-dom';
 
 import ProfileCard from './ProfileCard';
+import festheadImg from './assets/feestheads.jpg';
+import sponsorImg from './assets/sponsor.jpg';
+import ocImg from './assets/oc.jpg';
+import devImg from './assets/dev.jpg';
+import prImg from './assets/pr.jpg';
+import creativeImg from './assets/creative.jpg';
 
 const DEFAULT_PARTICLE_COUNT = 12;
 const DEFAULT_SPOTLIGHT_RADIUS = 300;
@@ -12,33 +18,39 @@ const MOBILE_BREAKPOINT = 768;
 const cardData = [
   {
     color: '#060010',
-    title: 'Festhead',
-    profiles: 2
+    title: 'Festheads',
+    profiles: 2,
+    image: festheadImg
   },
   {
     color: '#060010',
     title: 'Sponsorship',
-    profiles: 1
+    profiles: 1,
+    image: sponsorImg
   },
   {
     color: '#060010',
-    title: 'Collaboration',
-    profiles: 1
+    title: 'OC',
+    profiles: 1,
+    image: ocImg
   },
   {
     color: '#060010',
-    title: 'Automation',
-    profiles: 3
+    title: 'Creative',
+    profiles: 3,
+    image: creativeImg
   },
   {
     color: '#060010',
-    title: 'Integration',
-    profiles: 2
+    title: 'Developer',
+    profiles: 2,
+    image: devImg
   },
   {
     color: '#060010',
-    title: 'Security',
-    profiles: 2
+    title: 'Public Relations',
+    profiles: 2,
+    image: prImg
   }
 ];
 
@@ -645,7 +657,11 @@ const MagicBento = ({
               }`;
 
             const cardStyle = {
-              backgroundColor: card.color || 'var(--background-dark)',
+              backgroundColor: card.image ? 'transparent' : (card.color || 'var(--background-dark)'),
+              backgroundImage: card.image ? `linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url(${card.image})` : 'none',
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              filter: card.image ? 'brightness(1.15)' : 'none',
               borderColor: 'var(--border-color)',
               color: 'var(--white)',
               '--glow-x': '50%',
@@ -676,7 +692,7 @@ const MagicBento = ({
                   onCardClick={handleCardClick}
                 >
                   <div
-                    className="card__content flex flex-col justify-center relative text-white cursor-pointer"
+                    className="card__content flex flex-col relative text-white cursor-pointer h-full w-full"
                     style={{ zIndex: 10, pointerEvents: 'auto', touchAction: 'manipulation' }}
                     onClick={handleCardClick}
                   >

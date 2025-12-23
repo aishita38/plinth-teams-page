@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useCallback, useMemo } from 'react';
 import './ProfileCard.css';
-import codeIcon from './assets/code-icon.svg';
+import iconPattern from './assets/iconpattern.png';
 
 const DEFAULT_INNER_GRADIENT = 'linear-gradient(145deg,#60496e8c 0%,#71C4FF44 100%)';
 
@@ -18,8 +18,8 @@ const adjust = (v, fMin, fMax, tMin, tMax) => round(tMin + ((tMax - tMin) * (v -
 
 const ProfileCardComponent = ({
     avatarUrl = '<Placeholder for avatar URL>',
-    iconUrl = codeIcon,
-    grainUrl = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E`,
+    iconUrl = iconPattern,
+    grainUrl = 'https://reactbits.dev/assets/demo/grain.webp',
     innerGradient,
     behindGlowEnabled = true,
     behindGlowColor,
@@ -29,8 +29,9 @@ const ProfileCardComponent = ({
     enableMobileTilt = false,
     mobileTiltSensitivity = 5,
     miniAvatarUrl,
-    name = '',
-    handle = '',
+    name = 'Javi A. Torres',
+    title = 'Software Engineer',
+    handle = 'javicodes',
     status = 'Online',
     contactText = 'Contact',
     showUserInfo = true,
@@ -357,8 +358,7 @@ const ProfileCardComponent = ({
                         </div>
                         <div className="pc-content">
                             <div className="pc-details">
-                                <h3>{name}</h3>
-                            </div>
+                                <h3>{name}</h3>                            </div>
                         </div>
                     </div>
                 </section>
